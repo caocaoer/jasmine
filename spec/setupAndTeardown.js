@@ -49,3 +49,21 @@ describe('Setup and Teardown2222', function(){
         expect(globalCount).toBe(3);
     });
 });
+
+// this
+describe('this', function(){
+    beforeEach(function(){
+        this.count = this.count || 0;
+        this.count ++;
+    });
+    afterEach(function(){
+        // this.count ++;
+        this.count = 0; //无论是否有这行，结果是一样的，因为this指定的变量只能在每个spec的beforeEach/it/afterEach过程中传递
+    });
+    it('test this', function(){
+        expect(this.count).toBe(1);
+    });
+    it('test this2', function(){
+        expect(this.count).toBe(1);
+    });
+});
