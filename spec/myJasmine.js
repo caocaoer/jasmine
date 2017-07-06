@@ -81,6 +81,31 @@ describe('Frist jasmine test', function(){
         expect(arr).not.toContain('Jine');
         expect(arrObj).toContain(obj);
     });
+    // toBeLessThan 判断值类型的大小, 结果若小则为True(也可以判断字符及字符串, 以ASCII码的大小为判断依据)
+    // toBeGreaterThan 判断值类型的大小, 结果若大则为True(也可以判断字符及字符串, 以ASCII码的大小为判断依据)
+    // toBeCloseTo 判断数字是否相似(第二个参数为小数精度, 默认为2位)
+    // toThrow 判断是否抛出异常
+    it('toThrow', function(){
+        var fun = function(){
+            return 1 + 1;
+        }
+        var fun2 = function(){
+            return a + b;
+        }
+        expect(fun).not.toThrow();
+        expect(fun2).toThrow();
+    });
+    // toThrowError 判断是否抛出了指定的错误
+    it('toThrowError', function(){
+        var fun = function(){
+            throw new TypeError('error');
+        }
+        expect(fun).toThrowError('error');
+        expect(fun).not.toThrowError('sss');
+        expect(fun).toThrowError(TypeError);
+        expect(fun).toThrowError(TypeError, 'error');
+        expect(fun).not.toThrowError(TypeError, 'errors');
+    });
 });
 
 // describe('Frist jasmine test', function(){
